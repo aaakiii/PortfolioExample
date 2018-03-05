@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html class=" js csstransforms3d csstransitions gr__tympanus_net">
+<head lang="en">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Aki Software engineer</title>
+  <link rel="stylesheet" type="text/css" href="reset.css">
+  <link rel="stylesheet" href="drawer-master/dist/css/drawer.min.css">
+  <link href="bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="Hover-master/css/hover-min.css">
+<link rel="stylesheet" href="css3-animate-it-master/css/animations.css" type="text/css" />
+ <link rel="stylesheet" type="text/css" href="portfolio.css">
+<script type="text/javascript" src="jquery-3.1.1.min.js"></script>
+
+ <script src="PerspectivePageViewNavigation-master/js/modernizr.custom.25376.js"></script>
+ <script type="text/javascript">
+jQuery(function($) {
+    $('#the-form').submit(function(event) {
+        // HTMLでの送信をキャンセル
+        event.preventDefault();
+        
+        // 操作対象のフォーム要素を取得
+        var $form = $(this);
+        
+        // 送信ボタンを取得
+        // （後で使う: 二重送信を防止する。）
+        var $button = $form.find('button');
+        
+        // 送信
+        $.ajax({
+            url: $form.attr('action'),
+            type: $form.attr('method'),
+            data: $form.serialize()
+                + '&delay=1',  
+            timeout: 10000,  // 単位はミリ秒
+            
+            // 送信前
+            beforeSend: function(xhr, settings) {
+                // ボタンを無効化し、二重送信を防止
+                $button.attr('disabled', true);
+            },
+            // 応答後
+            complete: function(xhr, textStatus) {
+                // ボタンを有効化し、再送信を許可
+                $button.attr('disabled', false);
+            },
+            
+            // 通信成功時の処理
+            success: function(result, textStatus, xhr) {
+                // 入力値を初期化
+                $form[0].reset();
+                
+                $('#result').text('OK');
+            },
+            
+            // 通信失敗時の処理
+            error: function(xhr, textStatus, error) {}
+        });
+    });
+ </script>
+
+</head>
+
+
+<body data-gr-c-s-loaded="true">
+<div id="perspective" class="perspective effect-moveleft">
+	<div class="container">
+		<div class="wrapper">
+			<div class="codrops-top clearfix"></div>
+	<header class="codrops-header" role="banner"><a id="showMenu"><i class="fa fa-bars fa-2x" aria-hidden="true"></i></a>
+		
+	</header>	
+	<div class="main clearfix">
+
+<!-- page 1 -->
+<div class="col-md-12">
+		<section class="slide" id="Top">
+				<!-- 保留　 
+			    <div id="scroll">
+			    	<i class="fa fa-chevron-down" aria-hidden="true"></i>
+			    </div><!-- scroll -->
+			    
+			    
+			    <div id="text">Welcome to My journey</div>
+			    <div class="text2">I'm<div class="Aki"> Aki</div></div>
+			    
+			    <div class="text3">Software engineer</div>
+			    </div>
+		</section><!-- slide -->  
+
+
+		
+		     <!-- 文字チェンジ？　<div class="text4">What are you looking for?</div>
+	      　 <div class="text5">Here is menu!</div>　-->
+
+<!-- page 2 -->
+
+
+		
+	<!-- page 3 -->
+
+		<section class="slide" id="Portfolio">
+			<div class="container-fluid">
+				<p id="Mywork" class="navbar-text">My work</p>
+			</div><!-- container-fluid -->
+
+		  	<div class="project-list">
+
+		    	<a href="https://github.com/aaakiii/JavaQ" data-load-page="illustrations.html" class="project-list__item">
+	      		<img class="project-list__thumbnail" src="images/pexels-photo-24486.jpg" alt="#">
+	     	 	<div class="project-list__details">
+	         		<h1 class="project-list__title">JavaQ</h1>
+	       	 		<p class="project-list__description">Android App for Java lerners</p>
+	        		<span class="project-list__cta">View Project</span>
+	      		</div><!-- project-list__details -->
+	    		</a>
+
+	    		<a href="https://github.com/PerfectMorning/PerfectMorning" data-load-page="illustrations.html" class="project-list__item">
+	      		<img class="project-list__thumbnail" src="images/angels-landing-1802027__480.jpg" alt="#">
+	      		<div class="project-list__details">
+	        		<h1 class="project-list__title">Perfect Morning</h1>
+	        		<p class="project-list__description">iOS App for Breakfast</p>
+	        		<span class="project-list__cta">View Project</span>
+	      		</div><!-- project-list__details -->
+	    		</a>
+
+	    		<a href="https://github.com/aaakiii/Photravel" data-load-page="illustrations.html" class="project-list__item">
+	      		<img class="project-list__thumbnail" src="images/castle-956036__480.jpg" alt="#">
+	      		<div class="project-list__details">
+			        <h1 class="project-list__title">Photravel</h1>
+			        <p class="project-list__description">iOS App for traveling</p>
+			        <span class="project-list__cta">View Project</span>
+	      		</div><!-- project-list__details -->
+	   			 </a>
+
+	   		 	<a href="https://github.com/aaakiii/Snake-and-Ladders" data-load-page="illustrations.html" class="project-list__item">
+	      		<img class="project-list__thumbnail" src="images/london-769241__480.jpg" alt="#">
+	      		<div class="project-list__details">
+			        <h1 class="project-list__title">Snake and Ladders</h1>
+			        <p class="project-list__description">Objective-C command Line game</p>
+			        <span class="project-list__cta">View Project</span>
+	      		</div><!-- project-list__details -->
+	    		</a>
+
+	    		<a href="https://github.com/aaakiii/PizzaRestaurant" data-load-page="illustrations.html" class="project-list__item">
+	      		<img class="project-list__thumbnail" src="images/pexels-photo.jpg" alt="#">
+	      		<div class="project-list__details">
+			        <h1 class="project-list__title">Pizza Restraunt</h1>
+			        <p class="project-list__description">Objective-C command Line game</p>
+			        <span class="project-list__cta">View project-list</span>
+	      		</div>
+	   			 </a>
+
+				 <a href="https://github.com/aaakiii/Tetris" data-load-page="illustrations.html" class="project-list__item">
+				 <img class="project-list__thumbnail" src="images/travel-1209515__480.jpg" alt="#">
+				 <div class="project-list__details">
+			        <h1 class="project-list__title">Tetris</h1>
+			        <p class="project-list__description">A famous puzzle game by JavaScript</p>
+			        <span class="project-list__cta">View Project</span>
+			     </div>
+	    		 </a>
+
+	  		</div><!-- project-list-->
+		</section><!-- slide-->
+
+	<!-- page 4 -->
+
+		<section class="slide" id="Skillset">
+		<div class="col-md-12">
+			<div class="container-fluid">
+				<p id="skill" class="navbar-text">Skillset</p>
+			</div>
+			<div id="skill" data-jscrollability-id="2" style="display: block;">
+				<br>
+				<br>
+	                            <div class="skill-text"><p>JAVA</p></div> 
+	                            <div class="s-dotgroup">
+	                            <span class="dot-check"></span>
+	                                <span class="dot-check"></span>
+	                                <span class="dot-check"></span>
+	                                <span class="dot-check"></span>
+	                                <span class="dot-check"></span>
+	                                <span class="dot-check"></span>
+	                                <span class="dot-check"></span>
+	                                <span class="dot-check"></span>
+	                                <span class="dot-check"></span>
+	                                <span class="dot-uncheck"></span>
+	                             </div><!-- s-dotgroup -->
+	                             <br>
+	                             <div class="skill-text"><p>Android</p></div> 
+	                                   <div class="s-dotgroup">
+	                                <span class="dot-check"></span>
+	                                <span class="dot-check"></span>
+	                                <span class="dot-check"></span>
+	                                <span class="dot-check"></span>
+	                                <span class="dot-check"></span>
+	                                <span class="dot-check"></span>
+	                                <span class="dot-check"></span>
+	                                <span class="dot-check"></span>
+	                                <span class="dot-uncheck"></span>
+	                                <span class="dot-uncheck"></span>
+	                            </div><!-- s-dotgroup -->
+	                            <br>
+	                            <p class="skill-text">Swift</p>
+	                            <div class="s-dotgroup">
+	                                <span class="dot-check"></span>
+	                                <span class="dot-check"></span>
+	                                <span class="dot-check"></span>
+	                                <span class="dot-check"></span>
+	                                <span class="dot-check"></span>
+	                                <span class="dot-check"></span>
+	                                <span class="dot-check"></span>
+	                                <span class="dot-uncheck"></span>
+	                                <span class="dot-uncheck"></span>
+	                                <span class="dot-uncheck"></span>
+	                            </div><!-- s-dotgroup -->
+	                            <br>
+	                            <p class="skill-text">C</p>
+	                                    <div class="s-dotgroup">
+	                                <span class="dot-check"></span>
+	                                <span class="dot-check"></span>
+	                                <span class="dot-check"></span>
+	                                <span class="dot-check"></span>
+	                                <span class="dot-check"></span>
+	                                <span class="dot-check"></span>
+	                                <span class="dot-check"></span>
+	                                <span class="dot-uncheck"></span>
+	                                <span class="dot-uncheck"></span>
+	                                <span class="dot-uncheck"></span>
+	                            </div><!-- s-dotgroup -->
+	                            <br>
+	                            <p class="skill-text">Objective-C</p>
+
+	                            <div class="s-dotgroup">
+	                                <span class="dot-check"></span>
+	                                <span class="dot-check"></span>
+	                                <span class="dot-check"></span>
+	                                <span class="dot-check"></span>
+	                                <span class="dot-check"></span>
+	                                <span class="dot-check"></span>
+	                                <span class="dot-check"></span>
+	                                <span class="dot-uncheck"></span>
+	                                <span class="dot-uncheck"></span>
+	                                <span class="dot-uncheck"></span>
+	                            </div><!-- s-dotgroup -->
+	                            <br>
+	                            <p class="skill-text">JavaScript/Jquery</p>
+	                                   <div class="s-dotgroup">
+	                                <span class="dot-check"></span>
+	                                <span class="dot-check"></span>
+	                                <span class="dot-check"></span>
+	                                <span class="dot-check"></span>
+	                                <span class="dot-check"></span>
+	                                <span class="dot-check"></span>
+	                                <span class="dot-uncheck"></span>
+	                                <span class="dot-uncheck"></span>
+	                                <span class="dot-uncheck"></span>
+	                                <span class="dot-uncheck"></span>
+	                            </div><!-- s-dotgroup -->
+	                            <br>
+	                            <p class="skill-text">HTML/CSS</p>
+	                                   <div class="s-dotgroup">
+	                                <span class="dot-check"></span>
+	                                <span class="dot-check"></span>
+	                                <span class="dot-check"></span>
+	                                <span class="dot-check"></span>
+	                                <span class="dot-check"></span>
+	                                <span class="dot-check"></span>
+	                                <span class="dot-check"></span>
+	                                <span class="dot-uncheck"></span>
+	                                <span class="dot-uncheck"></span>
+	                                <span class="dot-uncheck"></span>
+	                            </div><!-- s-dotgroup -->
+	                            <br>
+	                            <p class="skill-text">SQL</p>
+	                                   <div class="s-dotgroup">
+	                                <span class="dot-check"></span>
+	                                <span class="dot-check"></span>
+	                                <span class="dot-check"></span>
+	                                <span class="dot-check"></span>
+	                                <span class="dot-check"></span>
+	                                <span class="dot-check"></span>
+	                                <span class="dot-uncheck"></span>
+	                                <span class="dot-uncheck"></span>
+	                                <span class="dot-uncheck"></span>
+	                                <span class="dot-uncheck"></span>
+	                            </div><!-- s-dotgroup -->
+	                           <br>
+	                           
+	             </div><!-- skill --> 
+	          </div>
+		</section><!-- slide-->
+
+	<!-- page 5 -->
+
+		<section class="slide" id="AboutMe">
+		<div class="container-fluid">
+		<p id="whoiam" class="navbar-text">Who I am</p>
+		</div>
+	    	<div class="col-md-6">
+		      <!-- <h3>Aki Okada</h3> -->
+		      <div class="introduction" align="left">
+		       <p class="AboutMe1">
+		       	Hi, there!!
+		       	Thanks for visiting my portfolio site.
+		       	I'm Aki, a software engineer who loves coding and traveling. Curently I'm looking for a job in a beautiful country, Canada.
+		       	I always enjoy challenging new things and trying to improve my skills. Since I'm addicted to seeing the scenery I have never seen before. I'm very responsible and great team player. Looking for working with you!!
+		       </p>
+		       </div><!-- introduction -->
+	    	</div><!-- col-md-6 -->
+	    	<div class="col-md-6">
+	     	<table>
+	        	<img class="AboutMe2" src="images/travel-1209515__480.jpg"/>
+	     	</table>
+	  		</div><!-- col-md-6 -->
+		</section><!-- slide-->
+
+	<!-- page 6 -->
+
+
+		<section class="slide" id="Contact">
+		  <div class="container-fluid">
+		  <p id="contact" class="navbar-text">Contact</p>
+		  </div><!-- container-fluid -->
+		    <section>
+		    	<h2>Get in touch !!</h2>
+        	<div class="email__outer">
+          	<a id="email" class="email" href="mailto:a.okada3@gmail.com">a.okada3@gmail.com</a>
+        	</div><!-- email_outer -->
+          	<div class="contact">
+		        <a class="fa fa-facebook-official fa-2x" href="#" aria-hidden="true"></a>
+		        <a class="fa fa-linkedin-square fa-2x" aria-hidden="true" href="#"></a>
+		        <a class="fa fa-github fa-2x" aria-hidden="true" href="#"></a>
+		  	</div><!-- contact -->
+			    <a class="hvr-buzz-out" href="#Top" id="back">Back to top</a>
+	   		</section>
+		</section><!-- slide-->
+
+
+		</div><!-- /main -->
+		</div><!-- wrapper -->
+		</div><!-- /container -->
+</div><!-- perspective -->
+
+	<nav id="nav" class="outer-nav right vertical">
+	     <a id="menu1" class="active2" href="#Portfolio">My work</a>
+	     <a id="menu2" class="active2" href="#Skillset">Skillset</a>
+	     <a id="menu3" class="active2" href="#AboutMe">Who I am</a>
+	     <a id="menu4" class="active2" href="#Contact">Contact</a>
+	</nav><!-- menulist -->
+
+<script src="PerspectivePageViewNavigation-master/js/classie.js"></script>
+<script src="PerspectivePageViewNavigation-master/js/menu.js"></script>
+
+
+
+</body>
+</html>

@@ -1,0 +1,613 @@
+html,body, .perspective{
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    -webkit-font-smoothing: antialiased;
+    background-color: #ede5e3;
+    font-family: PT Serif;
+}
+
+html {
+  font-size: 100%;
+ 
+  /* 600px以降から、100pxごとに1px大きくなる */
+  @media (min-width: 600px) {
+    font-size: calc(112.5% + 4 * (100vw - 600px) / 400)
+  }
+ 
+  /* 1,000px以上は、22pxに */
+  @media (min-width: 1000px) {
+    font-size: calc(137.5%)
+  }
+}
+header {
+    position: fixed;
+    z-index: 10;
+    width: 100%;
+    left: 0;
+    top: 0;
+    height: 52px;
+    display: block;
+    background-color: #ede5e3;
+    z-index: 999;
+
+}
+/* スクロールする場所：固定ナビゲーションの高さ＋余白をpadding-topに指定したりします。 */
+.main clearfix {
+  padding: px 0 0 0;
+}
+
+
+.wrapper{
+	background-color: #ede5e3;
+	font-family: PT Serif;
+	width: 100%;
+	text-align: center;
+    position: relative;
+}
+
+.container{
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    padding: 0;
+    background: #ede5e3;
+     z-index: 10;
+  -webkit-transform: translateZ(0) translateX(0) rotateY(0deg);
+   /* reset transforms (Chrome bug) */
+  
+}
+
+.container::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 0px;
+  opacity: 0;
+  background: rgba(0,0,0,0.2);
+  /* the transition delay of the height needs to be synced with the container transition time */
+  -webkit-transition: opacity 0.4s, height 0s 0.4s;
+  transition: opacity 0.4s, height 0s 0.4s;
+}
+
+
+/* Modal view */
+.perspective.modalview {
+  position: fixed;
+  perspective: 1500px;
+}
+
+.modalview .container {
+  position: absolute;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+
+.modalview .wrapper {
+  -webkit-transform: translateZ(-1px); /* solves a rendering bug in Chrome on Windows */
+}
+
+
+.animate .container::after {
+  height: 101%;
+  -webkit-transition: opacity 0.3s;
+  transition: opacity 0.3s;
+}
+
+
+/* Outer Nav */
+.outer-nav {
+  position: absolute;
+  height: auto;
+  font-size: 1.5rem;
+}
+
+.outer-nav.vertical {
+  top: 50%;
+  transform: translateY(-50%);
+  transform-style: preserve-3d;
+}
+.outer-nav a {
+  display: inline-block;
+  white-space: nowrap;
+  font-weight: 400;
+  color: #3f3d3d;
+  font-size: 1em;
+  -webkit-transition: color 0.3s;
+  transition: color 0.3s;
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  margin-bottom: 20px;
+
+}
+.outer-nav a:hover {
+  color: #607c57;   
+ 
+}
+
+
+.outer-nav.vertical a {
+  display: block;
+}
+
+.outer-nav a::before {
+  display: inline-block;
+  font-family: 'typicons';
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  margin-right: 10px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+.outer-nav.left {
+  left: 20%;
+}
+
+.outer-nav.right {
+  right: 20%;
+}
+
+.outer-nav.top {
+  top: 20%;
+}
+
+.outer-nav.bottom {
+  bottom: 20%;
+}
+
+
+.effect-moveleft {
+  background: #ede5e3;
+}
+
+.effect-moveleft .container {
+  -webkit-transition: -webkit-transform 0.4s;
+  transition: transform 0.4s;
+  -webkit-transform-origin: 50% 50%;
+  transform-origin: 50% 50%;
+}
+/*
+.effect-moveleft .container::after {
+  background: rgba(255,255,255,0.6);
+}
+*/
+.effect-moveleft.animate .container {
+  -webkit-transform: translateX(-25%) rotateY(45deg) translateZ(-25px);
+  transform: translateX(-25%) rotateY(45deg) translateZ(-25px);
+}
+
+.no-csstransforms3d .effect-moveleft.animate .container {
+  left: -75%;
+}
+
+.effect-moveleft .outer-nav a {
+  opacity: 1;
+  -webkit-transform: translateX(100px) translateZ(-1000px);
+  transform: translateX(100px) translateZ(-1000px);
+  -webkit-transition: -webkit-transform 0.4s, opacity 0.4s;
+  transition: transform 0.4s, opacity 0.4s;
+}
+
+.effect-moveleft.animate .outer-nav a {
+  opacity: 1;
+  -webkit-transform: translateX(0) translateZ(0);
+  transform: translateX(0) translateZ(0);
+}
+
+.effect-moveleft.animate .outer-nav a:nth-child(2) {
+  -webkit-transition-delay: 0.04s;
+  transition-delay: 0.04s;
+}
+
+.effect-moveleft.animate .outer-nav a:nth-child(3) {
+  -webkit-transition-delay: 0.08s;
+  transition-delay: 0.08s;
+}
+
+.effect-moveleft.animate .outer-nav a:nth-child(4) {
+  -webkit-transition-delay: 0.12s;
+  transition-delay: 0.12s;
+}
+
+.effect-moveleft.animate .outer-nav a:nth-child(5) {
+  -webkit-transition-delay: 0.16s;
+  transition-delay: 0.16s;
+}
+
+.effect-moveleft.animate .outer-nav a:nth-child(6) {
+  -webkit-transition-delay: 0.2s;
+  transition-delay: 0.2s;
+}
+
+.effect-moveleft.animate .outer-nav a:nth-child(7) {
+  -webkit-transition-delay: 0.24s;
+  transition-delay: 0.24s;
+}
+
+
+
+#Top.slide{
+    background-image: url(images/pexels-photo-30083.jpg);
+    opacity: 1.0;
+    position: relative;
+    background-size: cover;
+    background-position: 50% 25%;
+    border-width: 20px;
+    border-top-width: 70px;
+    overflow: hidden;
+    position: relative;
+    max-width: 100%;
+    height: 100vh;
+    display: block;
+    margin: 0 auto;
+    border: 52px solid #ede5e3;
+     
+}
+
+#text{
+    position: absolute;
+    top: 36.25%;
+    left: 25%;
+    font-size: 4vw;
+    color: #ede5e3;   
+    opacity: 1.0;
+    display: table;
+    font-weight: 600;
+}
+.text2{
+    position: absolute;
+    font-size: 3vw;
+    color: #ede5e3;
+    font-weight: 600;
+    top: 67%;
+    right: 30%;
+}
+
+.Aki{
+    position: absolute;
+    font-size: 4vw;
+    color: #ede5e3;
+    font-weight: 600;
+    top: -22%;
+    right: -161%;
+}
+
+.text3 {
+    position: absolute;
+    top: 79%;
+    right: 2%;
+    font-size: 3vw;
+    color: #ede5e3;
+    font-weight: 500;
+}
+#showMenu{
+    display: block;
+    position: relative;
+    top: 4px;
+    left: 46%;
+    padding: 10px;
+}
+
+.slide{
+	overflow: hidden;
+    position: relative;
+    opacity:0.9;
+}
+
+#scroll{
+    position: absolute;
+    bottom: 2em;
+    left: 50%;
+    color: #ede5e3;
+    font-size: 1.5em;
+}
+
+#Portfolio.slide{
+    overflow: hidden;
+    position: relative;
+    display: table;
+    margin: 0 auto;
+    border: 52px solid #ede5e3;
+    height: 100vh;
+    width: 100%;
+ 
+}
+.project-list__item {
+    position: relative;
+    display: block;
+    margin: 0 0 20px;
+    background-color: #607c57;
+    overflow: hidden;
+}
+
+.project-list__thumbnail {
+    display: block;
+    width: 100%;
+    opacity: 0.2;
+    height: 42vh;
+}
+.project-list__details {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    text-align: center;
+    color: #3f3d3d;
+    padding: 40px;
+}
+
+.project-list__title{
+    letter-spacing:.5rem;
+    font-size:1.3rem
+    }
+.project-list__description,
+.project-list__title{
+    color:#3f3d3d;
+    text-transform:uppercase;
+    margin:0 0 20px
+    }
+.project-list__cta,
+.project-list__description {
+    letter-spacing: 0.3rem;
+}
+.project-list__cta {
+    color: #3f3d3d;
+    display: block;
+    border: 5px solid #3f3d3d;
+    padding: 10px 20px;
+    text-transform: uppercase;
+}
+@media only screen and (min-width:48em) {
+    .project-list {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    }
+    .project-list__item {
+        width: 50%;
+        margin: 0;
+    }
+    .project-list__thumbnail {
+        opacity: 1;
+        -webkit-transition: all 0.3s ease;
+        transition: all 0.3s ease;
+    }
+    .project-list__item:focus .project-list__thumbnail,
+    .project-list__item:hover .project-list__thumbnail {
+        opacity: 0.2;
+    }
+    .project-list__details {
+        top: 100%;
+        -webkit-transition: all 0.3s ease;
+        transition: all 0.3s ease;
+    }
+    .project-list__item:focus .project-list__details,
+    .project-list__item:hover .project-list__details {
+        top: 0;
+    }
+    .project-list__title {
+        font-size: 1.6rem;
+    }
+}
+@media only screen and (min-width:64em) {
+    .project-list__item {
+        width: 33.3%;
+    }
+}
+#Skillset.slide{
+    overflow: hidden;
+    position: relative;
+    display: table;
+    margin: 0 auto;
+    border: 52px solid #ede5e3;
+    height: 100vh;
+    width: 100%;
+    max-width: 90% ;    /* 横幅の90% */
+    
+}
+
+.skill-text{
+    font-size: 1.5rem;
+    width: 50%;
+    display: inline-block;
+    vertical-align: top;
+    margin-right: auto;
+
+}
+
+ 
+.s-dotgroup{
+    font-size: 1.5rem;
+    max-width: 50%;
+    display: inline-block;
+    vertical-align: top;
+    margin-top: 0.5rem; 
+}
+.dot-check {
+    width: 2rem;
+    height: 1rem;
+    background: #607c57;
+    -moz-border-radius: 50px;
+    -webkit-border-radius: 50px;
+    border-radius: 50px;
+    float: left;
+    margin-left: 0.3rem;
+    position: relative;
+    margin-bottom: 10px;
+} 
+.dot-uncheck {
+    width: 2rem;
+    height: 1rem;
+    background: #dadada;
+    -moz-border-radius: 50px;
+    -webkit-border-radius: 50px;
+    border-radius: 50px;
+    float: left;
+    margin-left: 0.2em;
+    position: relative;
+    margin-bottom: 10px;
+    opacity: 0.5;
+
+}
+
+.col-md-12{
+  max-width: 100%;
+  height: auto;
+}
+span {
+    font-family: futura-pt, sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 1.2em;
+}
+
+#AboutMe.slide{
+    overflow: hidden;
+    position: relative;
+    display: table;
+    margin: 0 auto;
+    border: 52px solid #ede5e3;
+    height: 100vh;
+    width: 100%;
+
+}
+.AboutMe1{
+    letter-spacing: 0.1em;
+    line-height: 2rem;
+    font-size: 1rem;
+    margin-top: 3rem;
+}
+h2{
+  font-size: 2rem;
+  margin-top: 4rem;
+}
+.AboutMe2{
+    opacity: 0.9;
+    margin-top: 1.5rem;
+}
+
+#Contact.slide{
+    overflow: hidden;
+    position: relative;
+    display: table;
+    margin: 0 auto;
+    border: 55px solid #ede5e3;
+    height: 100vh;
+    width: 100%;
+    top: 5rem;
+}
+.contact-right{
+    height: 65vh;
+    margin-top: 4rem;
+}
+.contactmsg{
+    font-size: 1rem;
+    letter-spacing: 0.1rem;
+    line-height: 2rem;
+    margin-top: 4rem;
+}
+.form-group{
+    margin-top: 1.5rem;
+}
+.contact, .email{
+    font-size: 1rem;
+    position: relative;
+    letter-spacing: 0.3rem;
+    text-align: right;
+}
+.message{
+	padding-bottom: 2rem
+  margin-top:2rem;
+}
+.btn{
+	margin-top: 1rem;
+    background-color:#3f3d3d;
+    color: #ede5e3;
+    width: 100%;
+}
+.msgtitle{
+	 font-size: 2rem;
+    text-align: center;
+    margin-top: 2rem;
+}
+.scroll{
+	width: 100%;
+    bottom: 53px;
+    position: absolute;
+    font-size: 2rem;
+    color: #3f3d3d;
+    text-align: center;
+}
+
+
+
+.navbar-text{
+    max-width:600px; /* 要素の幅を指定する（固定幅ならwidth:600px;） */
+    font-weight: 600; 
+    position: relative;
+    font-size: 2rem;
+    text-decoration: underline;
+}
+.AboutMe2{
+    padding-top: 2rem;
+    max-width: 90% ;    /* 横幅の90% */
+    height: auto ;  
+}
+#back{
+    font-size: 1.5rem;
+    color: #3f3d3d;
+    position: relative;
+    left: 30%;
+    text-decoration: none;
+}
+#label2{
+    position: relative;
+    font-size: 1rem;
+    color: #3f3d3d;
+    right: 45%;
+}
+#label3{
+    position: relative;
+    font-size: 1rem;
+    color: #3f3d3d;
+    right: 39%;
+}
+#label4{
+    position: relative;
+    font-size: 1rem;
+    color: #3f3d3d;
+    right: 43%;
+}
+.fa{
+    color: #3f3d3d;
+    text-decoration: none;
+    margin-bottom: 2rem;
+}
